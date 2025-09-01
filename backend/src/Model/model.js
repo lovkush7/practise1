@@ -1,3 +1,4 @@
+// import { string } from "joi";
 import mongoose from "mongoose";
 import { type } from "os";
 
@@ -14,7 +15,12 @@ const userschema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    profilepic:{
+        type:String,
+        default:""
     }
+
 });
 
 const usermodel = new mongoose.model("data",userschema);
