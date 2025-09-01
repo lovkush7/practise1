@@ -14,7 +14,7 @@ const generatetoken = (req,res,userid)=>{
             maxAge:7*24*60*60*1000,
             httpOnly:true,
             sameSite:"strict",
-            secure:true
+            secure:false
         });
         return token;
 }
