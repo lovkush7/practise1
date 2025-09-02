@@ -13,7 +13,7 @@ app.use("/auth", router);
 app.listen(8000,async()=>{
     try{
     console.log("server is running");
-    await mongoose.connect(process.env.MONGOCONN)
+    await mongoose.connect(process.env.MONGOCONN);
     console.log('connect to db');
 
     }catch(err){
