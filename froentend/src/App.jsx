@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { Route,Routes } from 'react-router-dom'
+import { Navigate, Route,Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import Home from './pages/Home'
 import Login from './pages/login'
-import Signup from './pages/signup'
+import Signup from './pages/signup/signup'
 import Setting from './pages/setting'
 import Profilepic from './pages/Profilepic'
 import UseAuthStore from './Authstore/useAuthStore'
@@ -13,6 +13,7 @@ import {Loader} from "lucide-react";
 
 const App = () => {
   const {authUser,checkauth,ischeckingAuth} = UseAuthStore();
+  
 
   useEffect(()=>{
     checkauth()
@@ -23,7 +24,7 @@ const App = () => {
 
   if(ischeckingAuth && !authUser){
     <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-    <Loader />
+    <Loader style={{fontSize:"10px",animation:"spin"}} />
     </div>
   }
 
@@ -34,11 +35,11 @@ const App = () => {
 
 
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/signup' element={<Signup/>} />
+        <Route path='/' element={authUser ? <Home/> : <Navigate to="/signup" /> } />
+        <Route path='/login' element={!authUser ? <Login/> : <Navigate to="/" />}  />
+        <Route path='/signup' element={!authUser ? <Signup/> : <Navigate to="/" />} />
         <Route path='/setting' element={<Setting/>} />
-        <Route path='/profilepic' element={<Profilepic/>} />
+        <Route path='/profilepic' element={authUser ?<Profilepic/> : <Navigate to="/login"/>} />
 
       </Routes>
      

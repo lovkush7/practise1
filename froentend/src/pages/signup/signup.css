@@ -1,0 +1,49 @@
+.logo-mess{
+    font-size: 40px;
+    padding: 10px;
+    margin:10px;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+
+}
+.logo-dis{
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   
+}
+.logo{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+.form{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+    gap:6px;
+}
+.input input{
+   width:100%;
+   max-width: 300px;
+   padding: 9px;
+   outline: none;
+   border: 1px solid black;
+}
+.button{
+    width:100%;
+    max-width: 300px;
+    padding:8px;
+    margin-top:5px;
+
+}
