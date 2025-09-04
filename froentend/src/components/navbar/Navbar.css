@@ -1,0 +1,28 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .right{
+    display: flex;
+    align-items: center;
+
+}
+.right .link{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px;
+    text-decoration: none;
+    color: #111;
+}
+.right .link-btn{
+    padding: 5px;
+    outline:none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    gap: 9px;
+    
+
+}
