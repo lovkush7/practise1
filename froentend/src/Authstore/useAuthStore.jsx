@@ -62,7 +62,9 @@ login:async(data)=>{
         set({isloggingup:false})
     }
 
-}
+},
+
+profile: async(data)=>{}
 
 }));
 

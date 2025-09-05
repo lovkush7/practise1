@@ -5,7 +5,8 @@ import Home from './pages/Home'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Setting from './pages/setting'
-import Profilepic from './pages/Profilepic'
+// import Profilepic from './pages/Profilepic'
+import Profilepic from './pages/profile/Profilepic'
 import UseAuthStore from './Authstore/useAuthStore'
 import {Loader} from "lucide-react";
 
@@ -39,7 +40,7 @@ const App = () => {
         <Route path='/login' element={!authUser ? <Login/> : <Navigate to="/" />}  />
         <Route path='/signup' element={!authUser ? <Signup/> : <Navigate to="/" />} />
         <Route path='/setting' element={<Setting/>} />
-        <Route path='/profilepic' element={authUser ?<Profilepic/> : <Navigate to="/login"/>} />
+        <Route path='/profile' element={authUser ? <Profilepic/> : <Navigate to="/login"/>} />
 
       </Routes>
      
