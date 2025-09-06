@@ -64,7 +64,18 @@ login:async(data)=>{
 
 },
 
-profile: async(data)=>{}
+profile: async(data)=>{
+    set({isupdatingProfile:true})
+    try{
+        const res = await api.put("/auth/profilepic",data);
+        set({authUser:res.data});
+
+    }catch(err){
+       console.error("the error is"+err)
+    }finally{
+        set({isupdatingProfile:false})
+    }
+}
 
 }));
 

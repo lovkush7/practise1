@@ -17,11 +17,11 @@ const App = () => {
   
 
   useEffect(()=>{
-    checkauth()
+    checkauth();
   },
   [checkauth]);
 
-  console.log(authUser);
+  console.log("the user is"+ authUser);
 
   if(ischeckingAuth && !authUser){
     <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>

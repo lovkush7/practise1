@@ -46,6 +46,8 @@
     flex-direction: column;
     margin:10px;
     gap:6px;
+    width: 100%;
+    max-width: 500px;
 }
 .input input{
    width:100%;
