@@ -35,7 +35,7 @@ const Profilepic = () => {
         </div>
           <div className="main-part">
            <div className="image">
-            <img src={ selectimage|| authUser.Profilepic || "./avtar.png"} alt="profilepics" />
+            <img src={ selectimage|| authUser.profilepic || "./avtar.png"} alt="profilepics" />
             <label htmlFor="avtar-upload">
             <input type="file" accept='image/*' onChange={handleimageupdate} disabled={isupdatingProfile} style={{display:""}} />
             <FaCamera className='camera' style={{}} />

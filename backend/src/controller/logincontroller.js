@@ -3,7 +3,7 @@ import usermodel from "../Model/model.js";
 import bcrypt from "bcryptjs"
 
 
-const login =async (req,res,userid)=>{
+const login =async (req,res)=>{
 
 const {email,password,name,profilepic}=req.body;
 
@@ -19,8 +19,11 @@ try{
     if(!ispassequal){
         return res.status(405).json({success:false,message:"unauthorize credintials"})
     }
+    console.log("user._id before generating token:", user._id);
+// generatetoken(res, user._id);
+
   
-     generatetoken(user._id,res);
+     generatetoken(res,user._id);
      res.status(200).json({
         success:true,
         email:user.email,

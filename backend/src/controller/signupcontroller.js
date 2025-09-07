@@ -20,7 +20,7 @@ const model = new usermodel({name,email,password});
 model.password =await  bcrypt.hash(password,10);
 
 if(model){
-    generatetoken(model.id,res);
+    generatetoken(res,model.id);
     await model.save();
 res.status(202).json({
 name:model.name,
@@ -48,7 +48,7 @@ else{
 
 // }
 
-}catch(error){
+}catch(err){
     console.error("the error is"+err)
 }
 

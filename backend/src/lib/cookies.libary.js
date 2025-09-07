@@ -1,13 +1,15 @@
 import jwt from "jsonwebtoken";
 import "dotenv/config.js";
 
-const generatetoken = (req,res,userid)=>{
+const generatetoken = (res,userid)=>{
 
     const token =  jwt.sign(
         {userid},
         process.env.SECRETKEY,
         {expiresIn:"7d"}
-        )
+        );
+        console.log("userid received in generatetoken:", userid);
+
 
         res.cookie("jwt", token,
          {
