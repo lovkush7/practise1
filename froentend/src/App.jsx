@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Navigate, Route,Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
-import Home from './pages/Home'
+// import Home from './pages/Home'
 import Login from './pages/login/login'
 import Signup from './pages/signup/signup'
 import Setting from './pages/setting'
@@ -9,6 +9,7 @@ import Setting from './pages/setting'
 import Profilepic from './pages/profile/Profilepic'
 import UseAuthStore from './Authstore/useAuthStore'
 import {Loader} from "lucide-react";
+import Home from './pages/home/Home'
 
 
 
