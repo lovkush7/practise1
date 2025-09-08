@@ -15,7 +15,7 @@ const UseChatStore = create((set)=>({
         set({isuserloading:true})
         try{
             const res = await api.get("/messages/user");
-            set({Users:res.data});
+            set({Users:res.data.filteruser});
 
         }catch(err){
             console.error("the error is "+err);
@@ -36,7 +36,8 @@ const UseChatStore = create((set)=>({
        }finally{
         set({ismessageloading:false})
        }
-    }
+    },
+    setselecteduser:async(selectUsers)=>set({selectUsers}),
 
 
 }));
