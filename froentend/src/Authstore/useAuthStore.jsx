@@ -6,8 +6,8 @@ authUser:null,
 isSigningup:false,
 isloggingup:false,
 isupdatingProfile:false,
-
 ischeckingAuth: true,
+onlineUser:[],
 
 checkauth: async()=>{
     try{

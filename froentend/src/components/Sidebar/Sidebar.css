@@ -54,7 +54,7 @@
 .user-button:hover{
     background-color: #d1d5db;
 }
-.user-button .active{
+.user-button.active{
     background-color: #d1d5db;
     box-shadow: 0 0 0 2px #d1d5db;
 }
