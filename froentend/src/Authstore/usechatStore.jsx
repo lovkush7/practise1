@@ -3,7 +3,7 @@ import api from "../api/axios";
 // import { Users } from "lucide-react";
 
 
-const UseChatStore = create((set)=>({
+const UseChatStore = create((set,get)=>({
     messages:[],
     Users:[],
     selectUsers:null,
@@ -38,6 +38,16 @@ const UseChatStore = create((set)=>({
         set({ismessageloading:false})
        }
     },
+    sendmessage:async(messagedata)=>{
+      const {messages,selectUsers} = get();
+        try{
+           const res = await api.get(`/messages/send/${selectUsers._id}`,messagedata)
+           set({messages:[...messages,res.data]})
+        }catch(err){
+            console.error("the error is"+err)
+        }
+    },
+
     setselecteduser:async(selectUsers)=>set({selectUsers}),
 
 

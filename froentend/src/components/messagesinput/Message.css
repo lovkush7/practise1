@@ -1,0 +1,39 @@
+.messsage-input{
+    width: 100%;
+    padding:1rem;
+}
+.preview-wrapper{
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.preview-box{
+    position: relative;
+}
+.preview-image{
+width: 5rem;
+height: 5rem;
+object-fit: cover;
+border-radius: 0.5rem;
+border: 1px solid #3f3f46;
+}
+.remove-btn{
+    position: absolute;
+    top: -0.375rem;
+    right: -0.375rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+
+}
+.remove-icon{
+    font-size: 0.75rem;
+    line-height: 1;
+}
