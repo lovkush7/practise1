@@ -29,8 +29,27 @@ const Messagesinput = () => {
     fileInputRef.current.value="";
   };
 
-  const handlesendmessage = (e)=>{
-    
+  const handlesendmessage =async (e)=>{
+    e.preventDefault();
+    if(!text && !imagePreview){
+      return;
+    }
+    try{
+ 
+    await sendmessage({
+      text:text.trim(),
+      image:imagePreview
+    });
+    //clearing the form 
+    setText("");
+    setImagePrewiew(null);
+    if(fileInputRef.current){
+      fileInputRef.current.value="";
+    }
+
+    }catch(err){
+     console.error("the error is "+err)
+    }
   }
 
 

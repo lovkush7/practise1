@@ -41,7 +41,7 @@ const UseChatStore = create((set,get)=>({
     sendmessage:async(messagedata)=>{
       const {messages,selectUsers} = get();
         try{
-           const res = await api.get(`/messages/send/${selectUsers._id}`,messagedata)
+           const res = await api.post(`/messages/send/${selectUsers._id}`,messagedata)
            set({messages:[...messages,res.data]})
         }catch(err){
             console.error("the error is"+err)
