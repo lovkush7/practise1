@@ -1,7 +1,7 @@
 import messagemodel from "../Model/message.js";
 
 
-const getmessages =async(res,req)=>{
+const getmessages =async(req,res)=>{
 
     try{
         const {id:usertochat} =req.params;

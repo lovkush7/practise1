@@ -1,20 +1,37 @@
 import React, { useRef, useState } from 'react'
 import UseChatStore from '../../Authstore/usechatStore';
 import "./Message.css"
-import { Image } from 'lucide-react';
+import { Image, Send } from 'lucide-react';
 
 const Messagesinput = () => {
-  const {text,setText} = useState("");
-  const {imagePreview,setImagePrewiew} = useState(null);
-  const {fileInputRef} = useRef(null);
+  const [text,setText] = useState("");
+  const [imagePreview,setImagePrewiew] = useState(null);
+  const fileInputRef = useRef(null);
 
   const {sendmessage}=UseChatStore();
 
-  const handleImagechange = (e)=>{};
+  const handleImagechange = (e)=>{
+    const file = e.target.files[0];
+    if(!file.type.startsWith("image/")){
+      console.log('select image');
+      return;
+    }
+    const reader = new FileReader();
+   reader.onload=()=>{
+    setImagePrewiew(reader.result);
+   }
+   reader.readAsDataURL(file);
+  };
 
-  const removeImage = (e)=>{};
+  const removeImage = ()=>{
+    setImagePrewiew(null);
+    if(fileInputRef.current)
+    fileInputRef.current.value="";
+  };
 
-  const handlesendmessage = ()=>{}
+  const handlesendmessage = (e)=>{
+    
+  }
 
 
   return (
@@ -43,11 +60,17 @@ const Messagesinput = () => {
           onChange={handleImagechange} />
 
           <button type='button'
-          className={`btn btn-circle btnn-sm-hidden ${imagePreview ? 'text-emerald-500' : 'text-zinc-400'}`}
+          className={`btn btn-circle btn-sm-hidden ${imagePreview ? 'text-emerald-500' : 'text-zinc-400'}`}
           onClick={()=>fileInputRef.current?.click()}>
            <Image size={20}/>
           </button>
         </div>
+        <button 
+        type='submit'
+        className='bttn btn-sm bttn-circle'
+        disabled={!text.trim() && !imagePreview}>
+        <Send size={22}/>
+        </button>
       </form>
       
     </div>

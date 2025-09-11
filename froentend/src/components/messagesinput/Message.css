@@ -37,3 +37,116 @@ border: 1px solid #3f3f46;
     font-size: 0.75rem;
     line-height: 1;
 }
+.form-row{
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+}
+.form-row .grow{
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+}
+.input-text{
+    width:100%;
+    box-sizing: border-box;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    background: white;
+    outline: none;
+}
+.input-text:focus{
+    border-color: #6b8cff;
+    box-shadow: 0 0 0 3px rgba(107, 140, 255, 0.12);
+}
+
+@media(min-width:640px){
+    .input-text{
+        padding:0.5rem 0.75rem;
+        font-size: 1rem;
+    }
+}
+.hidden{
+    display: none;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem;
+    border:none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 0.357rem;
+}
+.btn:focus{
+    outline: none;
+}
+.btn-circle{
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.btn-sm-hidden{
+    display: none;
+}
+@media(min-width:640px){
+    .btn-sm-hidden{
+        display: inline-block;
+    }
+}
+.text-emerald-500{
+    color: #10b981;
+}
+.text-zinc-400{
+    color: #a1a1aa;
+}
+/* Plain-CSS equivalent for: className="btn btn-sm btn-circle" */
+
+.bttn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.375rem;
+    color: #a1a1aa;
+    background-color: transparent; /* blue-500 */
+    
+    cursor: pointer;
+    transition: background-color .15s ease, opacity .15s ease;
+  }
+  
+  .bttn:hover:not(:disabled) {
+    background-color:  #d9d9e2; /* blue-600 */
+  }
+  
+  .bttn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* small size */
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* circular variant */
+  .bttn-circle {
+    border-radius: 9999px;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+  }
+  
