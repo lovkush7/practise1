@@ -8,10 +8,10 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 const Home = () => {
   const {selectUsers} = UseChatStore();
   return (
-    <div className='home'>
-      <div className="home-container">
-        <div className="chat-box">
-          <div className="chat-wrapper">
+    <div className='page-container'>
+      <div className="page-content">
+        <div className="chat-card">
+          <div className="chat-container">
             <Sidebar/>
 
             {!selectUsers ? <NochatSelectde/> : <Chatcontainer/>}
@@ -21,6 +21,9 @@ const Home = () => {
         
       
     </div>
+
+    
+    
   )
 }
 

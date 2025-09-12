@@ -1,0 +1,13 @@
+<div className='home'>
+      <div className="home-container">
+        <div className="chat-box">
+          <div className="chat-wrapper">
+            <Sidebar/>
+
+            {!selectUsers ? <NochatSelectde/> : <Chatcontainer/>}
+          </div>
+        </div>
+      </div>
+        
+      
+    </div>
