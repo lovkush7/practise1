@@ -1,13 +1,14 @@
 import { create } from "zustand";
 import api from "../api/axios";
 
-const UseAuthStore = create((set)=>({
+const UseAuthStore = create((set,get)=>({
 authUser:null,
 isSigningup:false,
 isloggingup:false,
 isupdatingProfile:false,
 ischeckingAuth: true,
 onlineUser:[],
+socket:null,
 
 checkauth: async()=>{
     try{
@@ -53,7 +54,8 @@ login:async(data)=>{
     set({isloggingup:true})
     try{
         const response = await api.post("/auth/login",data);
-        set({authUser:response.data})
+        set({authUser:response.data});
+        get().connectsocket();
 
     }catch(err){
         console.error("the error is"+err)
@@ -75,7 +77,10 @@ profile: async(data)=>{
     }finally{
         set({isupdatingProfile:false})
     }
-}
+
+},
+connectsocket:()=>{}
+
 
 }));
 

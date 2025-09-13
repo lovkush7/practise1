@@ -2,7 +2,7 @@ import cloudinary from "../lib/cloudnary.js";
 import messagemodel from "../Model/message.js";
 
 
-const sendmessage = async(res,req)=>{
+const sendmessage = async(req,res)=>{
 
     try{
         const {text , image }=req.body;

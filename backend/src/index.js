@@ -5,8 +5,9 @@ import messagerouter from "./Routes/message.route.js";
 import "dotenv/config.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { app, server } from "./lib/Socket.io.js";
 
-const app = express();
+
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cookieParser());
@@ -20,7 +21,7 @@ app.use(cors(
 app.use("/auth", router);
 app.use("/messages",messagerouter);
 
-app.listen(8000,async()=>{
+server.listen(8000,async()=>{
     try{
     console.log("server is running");
     await mongoose.connect(process.env.MONGOCONN);
@@ -30,4 +31,5 @@ app.listen(8000,async()=>{
         console.error("the error is "+err);
     }
 });
+
 

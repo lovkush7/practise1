@@ -10,6 +10,6 @@ router.get("/user",protectedroute,getuser);
 
 router.get("/:id",protectedroute,getmessages);
 
-router.get("/send/:id",protectedroute,sendmessage)
+router.post("/send/:id",protectedroute,sendmessage)
 
 export default router;
