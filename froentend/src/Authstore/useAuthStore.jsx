@@ -1,5 +1,8 @@
 import { create } from "zustand";
 import api from "../api/axios";
+import {io} from "socket.io-client";
+
+ const BASE_URL="http://localhost:8000"
 
 const UseAuthStore = create((set,get)=>({
 authUser:null,
@@ -15,6 +18,7 @@ checkauth: async()=>{
         const response = await api.get("/auth/check");
 
         set({authUser:response.data});
+        get().connectsocket()
 
     }catch(err){
         set({authUser:null});
@@ -30,6 +34,7 @@ signup: async (data)=>{
     try{
         const res = await api.post("/auth/signup",data);
         set({authUser:res.data})
+        get().connectsocket();
 
     }catch(err){
         console.error("the error is"+err)
@@ -43,6 +48,7 @@ logout:async ()=>{
         const response = await api.post("/auth/logout");
         set({authUser:null})
         console.log("logout successfully");
+        get().disconnectsocket();
         console.log(response)
 
     }catch(err){
@@ -79,7 +85,36 @@ profile: async(data)=>{
     }
 
 },
-connectsocket:()=>{}
+connectsocket:()=>{ 
+try{
+    const{authUser}=get();
+    if(!authUser || get().socket?.connected) return;
+
+
+    const socket =io(BASE_URL,{
+        query:{
+            userId:authUser._id,
+        }
+    });
+    socket.connect();
+    set({socket:socket})
+
+}catch(err){
+    console.error("the error is "+err);
+
+}
+
+},
+
+disconnectsocket:()=>{
+    try{
+   if(get().socket?.connected){
+    get().socket().disconnect();
+   }
+    }catch(err){
+        console.error("the error is "+ err)
+    }
+}
 
 
 }));
