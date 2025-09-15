@@ -14,8 +14,11 @@ import Home from './pages/home/Home'
 
 
 const App = () => {
-  const {authUser,checkauth,ischeckingAuth} = UseAuthStore();
+  const {authUser,checkauth,ischeckingAuth,onlineUser} = UseAuthStore();
   
+
+console.log({onlineUser})
+
 
   useEffect(()=>{
     checkauth();
@@ -23,6 +26,7 @@ const App = () => {
   [checkauth]);
 
   console.log("the user is"+ authUser);
+  
 
   if(ischeckingAuth && !authUser){
     <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>

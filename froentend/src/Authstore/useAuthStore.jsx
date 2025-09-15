@@ -99,6 +99,10 @@ try{
     socket.connect();
     set({socket:socket})
 
+    socket.on("getOnlineUsers",(userIds)=>{
+        set({onlineUser:userIds});
+    })
+
 }catch(err){
     console.error("the error is "+err);
 
@@ -109,7 +113,7 @@ try{
 disconnectsocket:()=>{
     try{
    if(get().socket?.connected){
-    get().socket().disconnect();
+    get().socket.disconnect();
    }
     }catch(err){
         console.error("the error is "+ err)
