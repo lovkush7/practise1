@@ -1,5 +1,6 @@
 import   { create } from "zustand";
 import api from "../api/axios";
+import UseAuthStore from "./useAuthStore";
 // import { Users } from "lucide-react";
 
 
@@ -46,6 +47,21 @@ const UseChatStore = create((set,get)=>({
         }catch(err){
             console.error("the error is"+err)
         }
+    },
+    suscribetomessage: ()=>{
+        const {selectUsers} = get();
+        if(!selectUsers) return;
+
+        const socket = UseAuthStore.getState().socket;
+
+        socket.on("newmessage",(newmessage)=>{
+           set({messages: [...get().messages, newmessage]})
+        })
+    },
+
+    unsuscribetomessage: ()=>{
+        const socket = UseAuthStore.getState().socket;
+        socket.off("newmessage");
     },
 
     setselecteduser:async(selectUsers)=>set({selectUsers}),
