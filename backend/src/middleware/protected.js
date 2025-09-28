@@ -6,12 +6,12 @@ import "dotenv/config.js"
 const protectedroute = async(req,res,next)=>{
     try{
         const token = req.cookies.jwt;
-         console.log( "token"+token);
+        //  console.log( "token"+token);
         if(!token){
             return res.status(404).json({success:false,messages:"unauthorize-token"})
         }
-        const decoded = jwt.verify(token, process.env.SECRETKEY)
-        console.log("decoded"+decoded)
+        const decoded = jwt.verify(token, process.env.SECRETKEY);
+        // console.log("decoded"+decoded)
 
         if(!decoded){
             return res.json({success:false,messages:"invalid token"});
@@ -20,7 +20,7 @@ const protectedroute = async(req,res,next)=>{
 
         const user = await usermodel.findById(decoded.userid).select("-password");
         // const user = await usermodel.findById(decoded.userId).select("-password");
-        console.log("user"+ user);
+        // console.log("user"+ user);
 
         if(!user){
             return res.json({success:false,message:"user not foundddddd"})

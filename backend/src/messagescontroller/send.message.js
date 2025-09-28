@@ -1,4 +1,5 @@
 import cloudinary from "../lib/cloudnary.js";
+import { getReciverSocketId, io } from "../lib/Socket.io.js";
 import messagemodel from "../Model/message.js";
 
 
@@ -26,6 +27,11 @@ const sendmessage = async(req,res)=>{
         await newmessage.save();
 
         //we will do the socket io here
+        const reciversocketid = getReciverSocketId(receiverId);
+        if(reciversocketid){
+            io.to(reciversocketid).emit("newmessage",newmessage);
+        }
+
 
         res.status(200).json(newmessage);
 
